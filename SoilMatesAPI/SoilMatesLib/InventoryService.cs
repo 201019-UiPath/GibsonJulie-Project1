@@ -9,7 +9,7 @@ namespace SoilMatesLib
     /// <summary>
     /// Allows access to inventory repository services
     /// </summary>
-    public class InventoryService
+    public class InventoryService : IInventoryService
     {
         private IIventoryRepo repo;
 

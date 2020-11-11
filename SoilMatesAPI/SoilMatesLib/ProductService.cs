@@ -9,7 +9,7 @@ namespace SoilMatesLib
     /// <summary>
     /// Service for product models to interact with repository
     /// </summary>
-    public class ProductService
+    public class ProductService : IProductService
     {
         private IProductRepo repo;
 

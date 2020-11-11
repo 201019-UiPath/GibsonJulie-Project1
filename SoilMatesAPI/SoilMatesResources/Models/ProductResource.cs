@@ -8,6 +8,8 @@ namespace SoilMatesResources.Models
     {
         public string Name { get; set; }
         public decimal Price { get; set; }
+        public string Description { get; set; }
+
         public List<InventoryResource> ProductLocations { get; set; }
         public List<OrderProductResource> LineItem { get; set; }
     }

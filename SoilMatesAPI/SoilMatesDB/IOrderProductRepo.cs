@@ -5,12 +5,10 @@ namespace SoilMatesDB
     /// <summary>
     /// Interface for OrderProduct repository
     /// </summary>
-    public interface IOrderProduct
+    public interface IOrderProductRepo
     {
         List<OrderProduct> GetAllOrderProduct();
-
         void AddOrderProduct(OrderProduct lineItem);
-
         OrderProduct GetOrderProduct(int orderId, int productId);
     }
 }

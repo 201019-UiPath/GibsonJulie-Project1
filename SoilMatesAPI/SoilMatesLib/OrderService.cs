@@ -9,7 +9,7 @@ namespace SoilMatesLib
     /// <summary>
     /// Service for order models to interact with repository
     /// </summary>
-    public class OrderService
+    public class OrderService : IOrderService
     {
         private IOrdersRepo repo;
 

@@ -31,15 +31,32 @@ namespace SoilMatesAPI
         {
             services.AddControllers();
             services.AddDbContext<SoilMatesContext>(options => options.UseNpgsql(Configuration.GetConnectionString("SoilMatesDB")));
+
+            services.AddScoped<IRepository, DBrepo>();
+
+            //Customer 
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ICustomerRepo, DBrepo>();
             services.AddScoped<ICustomerMapper, Mapper>();
 
+            //Manager
             services.AddScoped<IManagerService, ManagerService>();
             services.AddScoped<IManagerRepo, DBrepo>();
             services.AddScoped<IManagerMapper, Mapper>();
 
-           
+            //Orders
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IOrdersRepo, DBrepo>();
+            services.AddScoped<IOrderMapper, Mapper>();
+
+            services.AddScoped<IOrderProductService, OrderProductService>();
+            services.AddScoped<IOrderProductRepo, DBrepo>();
+            services.AddScoped<IOrderProductMapper, Mapper>();
+
+            services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<IProductRepo, DBrepo>();
+            services.AddScoped<IProductMapper, Mapper>();
+
 
 
 

@@ -15,8 +15,7 @@ namespace SoilMatesDB
     public class DBrepo : IRepository
     {
             private SoilMatesContext context;
-        
-
+       
             /// <summary>
             /// Repository constructor
             /// </summary>
@@ -74,8 +73,6 @@ namespace SoilMatesDB
                 //Log.Information("Retrieved manager from repository.");
                 return (Manager)context.Managers.FirstOrDefault(x => x.Email.Equals(email));
             }
-
-
 
             /// <summary>
             /// Retrieves customer from database by name of customer
@@ -308,7 +305,9 @@ namespace SoilMatesDB
             public List<Order> GetAllOrders()
             {
                 Log.Information("Retrieved all orders.");
-                return context.Orders.Include(s => s).ToList();
+                return context.Orders
+                .Include(s => s)
+                    .ThenInclude(s => s.LineItem).ThenInclude(s=>s).ThenInclude(s=>s.Product).ToList();
             }
 
             /// <summary>

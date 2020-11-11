@@ -10,7 +10,7 @@ namespace SoilMatesLib
     /// <summary>
     /// Provides services for location model to interact with repository
     /// </summary>
-    public class LocationService
+    public class LocationService : ILocationService
     {
         private ILocationRepo repo;
 

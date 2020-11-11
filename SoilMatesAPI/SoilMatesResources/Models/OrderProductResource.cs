@@ -6,8 +6,11 @@ namespace SoilMatesResources.Models
 {
     public class OrderProductResource
     {
-        public ProductResource Product { get; set; }
-        public OrderResource Order { get; set; }
+        public int OrderForiegnId { get; set; }
+        public int ProductForiegnId { get; set; }
+        public String Name { get; set; }
+        public decimal Price { get; set; }
+        public string Description { get; set; }
         public int Quantity { get; set; }
     }
 }

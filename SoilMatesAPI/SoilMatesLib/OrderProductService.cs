@@ -7,9 +7,9 @@ namespace SoilMatesLib
     /// <summary>
     /// Line items in orders allowing for multiple porducts per order
     /// </summary>
-    public class OrderProductService
+    public class OrderProductService : IOrderProductService
     {
-        private IOrderProduct repo;
+        private IOrderProductRepo repo;
 
         public OrderProductService(IRepository repo)
         {

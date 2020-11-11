@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace SoilMatesResources
 {
-    public class Mapper : ICustomerMapper, IManagerMapper
+    public class Mapper : ICustomerMapper, IManagerMapper, IOrderMapper, IProductMapper, IOrderProductMapper
     {
         public Customer ParseCustomer(CustomerResource customer)
         {
@@ -67,6 +67,121 @@ namespace SoilMatesResources
             return allManagers;
         }
 
-       
+        public Order ParseOrder(OrderResource order)
+        {
+            return new Order
+            {
+                TotalPrice = order.TotalPrice,
+                Address = order.Address,
+                OrderTime = order.OrderTime,
+                OrderId = order.OrderId,
+                CustomerId = order.CustomerId,
+                LocationId = order.LocationId,
+                LineItem = ParseOrderProductResource(order.LineItem),
+            };
+        }
+
+        public OrderResource ParseOrder(Order order)
+        {
+            return new OrderResource
+            {
+                TotalPrice = order.TotalPrice,
+                Address = order.Address,
+                OrderTime = order.OrderTime,
+                OrderId = order.OrderId,
+                CustomerId = order.CustomerId,
+                LocationId = order.LocationId,
+                LineItem = ParseOrderProductResource(order.LineItem)
+            };
+        }
+
+        public List<OrderResource> ParseOrder(List<Order> order)
+        {
+            List<OrderResource> orderResources = new List<OrderResource>();
+            foreach(var o in order)
+            {
+                orderResources.Add(ParseOrder(o));
+            }
+            return orderResources;
+        }
+
+        public Product ParseProduct(ProductResource product)
+        {
+            return new Product
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+            };
+        }
+
+        public ProductResource ParseProduct(Product product)
+        {
+            return new ProductResource
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+            };
+        }
+
+        public List<ProductResource> ParseProduct(List<Product> product)
+        {
+            List<ProductResource> products = new List<ProductResource>();
+            foreach(var p in product)
+            {
+                products.Add(ParseProduct(p));
+            }
+            return products;
+        }
+
+        public OrderProduct ParseOrderProductResource(OrderProductResource orderProduct)
+        {
+            return new OrderProduct
+            {
+                ProductForiegnId= orderProduct.ProductForiegnId,
+                OrderForiegnId = orderProduct.OrderForiegnId,
+                Quantity = orderProduct.Quantity,
+     
+            };
+        }
+
+        public OrderProductResource ParseOrderProductResource(OrderProduct orderProduct)
+        {
+            return new OrderProductResource
+            {
+                OrderForiegnId =orderProduct.ProductForiegnId,
+                ProductForiegnId = orderProduct.OrderForiegnId,
+                Quantity = orderProduct.Quantity,
+                Name = orderProduct.Product.Name,
+                Price = orderProduct.Product.Price,
+                Description = orderProduct.Product.Description,
+            };
+        }
+
+        public List<OrderProductResource> ParseOrderProductResource(List<OrderProduct> orderProduct)
+        {
+            if (orderProduct != null)
+            {
+                List<OrderProductResource> orderProductResource = new List<OrderProductResource>();
+                foreach (var op in orderProduct)
+                {
+                    orderProductResource.Add(ParseOrderProductResource(op));
+                }
+
+                return orderProductResource;
+            }
+            return null;
+        }
+
+        public List<OrderProduct> ParseOrderProductResource(List<OrderProductResource> orderProduct)
+        {
+            List<OrderProduct> orderProductResource = new List<OrderProduct>();
+            foreach (var op in orderProduct)
+            {
+                orderProductResource.Add(ParseOrderProductResource(op));
+            }
+            return orderProductResource;
+        }
     }
 }
