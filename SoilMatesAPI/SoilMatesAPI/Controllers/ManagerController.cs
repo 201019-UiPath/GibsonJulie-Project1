@@ -13,24 +13,24 @@ namespace SoilMatesAPI.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class ManagerController : ControllerBase
     {
-        private readonly ICustomerService _customerService;
-        private readonly ICustomerMapper _mapper;
+        private readonly IManagerService _managerService;
+        private readonly IManagerMapper _mapper;
 
-        public CustomerController(ICustomerService customerService, ICustomerMapper mapper)
+        public ManagerController(IManagerService managerService, IManagerMapper mapper)
         {
-            _customerService = customerService;
+            _managerService = managerService;
             _mapper = mapper;
         }
 
         [HttpGet("get")]
         [Produces("application/json")]
-        public IActionResult GetAllCustomers()
+        public IActionResult GetAllManagers()
         {
             try
             {
-                return Ok(_mapper.ParseCustomer(_customerService.GetAllCustomers()));
+                return Ok(_mapper.ParseManager(_managerService.GetAllManagers()));
             }
             catch (Exception)
             {
@@ -40,13 +40,14 @@ namespace SoilMatesAPI.Controllers
 
         [HttpGet("get/{email}")]
         [Produces("application/json")]
-        public IActionResult GetCustomerByEmail(string email)
+        public IActionResult GetManagerByEmail(string email)
         {
             try
             {
-                CustomerResource customer = _mapper.ParseCustomer(_customerService.GetCustomerByEmail(email));
-                return Ok(customer);
-            } catch (Exception)
+                ManagerResource manager = _mapper.ParseManager(_managerService.GetManagerByEmail(email));
+                return Ok(manager);
+            }
+            catch (Exception)
             {
                 return StatusCode(500);
             }
@@ -55,13 +56,13 @@ namespace SoilMatesAPI.Controllers
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]
-        public IActionResult AddCustomer(CustomerResource newCustomer)
+        public IActionResult AddManager(ManagerResource newManager)
         {
             try
             {
-                _customerService.AddCustomer(_mapper.ParseCustomer(newCustomer));
-                _customerService.SaveChanges();
-                return CreatedAtAction("AddCustomer", newCustomer);
+                _managerService.AddManager(_mapper.ParseManager(newManager));
+                _managerService.SaveChanges();
+                return CreatedAtAction("AddCustomer", newManager);
             }
             catch (Exception)
             {
@@ -70,3 +71,5 @@ namespace SoilMatesAPI.Controllers
         }
     }
 }
+
+

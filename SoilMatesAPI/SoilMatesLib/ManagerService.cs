@@ -9,7 +9,7 @@ namespace SoilMatesLib
     /// <summary>
     /// Service for manager model to instact with repository
     /// </summary>
-    public class ManagerService
+    public class ManagerService : IManagerService
     {
         private IManagerRepo repo;
 
@@ -62,13 +62,22 @@ namespace SoilMatesLib
             return repo.GetManagerByLogin(password, email);
         }
 
-
         /// <summary>
         /// Save changes to repository
         /// </summary>
         public void SaveChanges()
         {
             repo.SaveChanges();
+        }
+
+        public List<Manager> GetAllManagers()
+        {
+            return repo.GetAllManagers();
+        }
+
+        public Manager GetManagerByEmail(string email)
+        {
+            return repo.GetManagerByEmail(email);
         }
     }
 }

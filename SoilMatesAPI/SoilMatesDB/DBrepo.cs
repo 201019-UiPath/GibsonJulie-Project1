@@ -12,7 +12,7 @@ namespace SoilMatesDB
     /// <summary>
     /// Database repository for soilmates
     /// </summary>
-    public class DBrepo : ICustomerRepo
+    public class DBrepo : IRepository
     {
             private SoilMatesContext context;
         
@@ -71,7 +71,7 @@ namespace SoilMatesDB
 
             public Manager GetManagerByEmail(string email)
             {
-                Log.Information("Retrieved manager from repository.");
+                //Log.Information("Retrieved manager from repository.");
                 return (Manager)context.Managers.FirstOrDefault(x => x.Email.Equals(email));
             }
 
@@ -297,7 +297,7 @@ namespace SoilMatesDB
             /// <returns></returns>
             public List<Manager> GetAllManagers()
             {
-                Log.Information("Retrieved all managers.");
+                //Log.Information("Retrieved all managers.");
                 return context.Managers.Include(s => s).ToList();
             }
 

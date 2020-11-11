@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SoilMatesDB;
@@ -9,9 +10,10 @@ using SoilMatesDB;
 namespace SoilMatesDB.Migrations
 {
     [DbContext(typeof(SoilMatesContext))]
-    partial class SoilMatesContextModelSnapshot : ModelSnapshot
+    [Migration("20201110043652_AddQuantityOrderProduct")]
+    partial class AddQuantityOrderProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

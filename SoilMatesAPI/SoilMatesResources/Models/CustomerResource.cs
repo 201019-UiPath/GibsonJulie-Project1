@@ -6,10 +6,11 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
-    public class CustomerWeb
+    public class CustomerResource
     {
         [Required]
         public string Name { get; set; }
+        [Required]
         [EmailAddress]
         public string Email { get; set; }
         [Required]

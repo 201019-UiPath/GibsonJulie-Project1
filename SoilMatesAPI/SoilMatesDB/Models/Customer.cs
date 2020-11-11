@@ -21,7 +21,5 @@ namespace SoilMatesDB.Models
             this.Password = password;
             this.UserType = 0;
         }
-
-
     }
 }

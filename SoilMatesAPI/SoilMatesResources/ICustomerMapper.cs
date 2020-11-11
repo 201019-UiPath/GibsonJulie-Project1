@@ -6,8 +6,8 @@ namespace SoilMatesResources
 {
     public interface ICustomerMapper
     {
-        Customer ParseCustomer(CustomerWeb customer);
-        CustomerWeb ParseCustomer(Customer cutomer);
-        List<CustomerWeb> ParseCustomer(List<Customer> customer);
+        Customer ParseCustomer(CustomerResource customer);
+        CustomerResource ParseCustomer(Customer cutomer);
+        List<CustomerResource> ParseCustomer(List<Customer> customer);
     }
 }
