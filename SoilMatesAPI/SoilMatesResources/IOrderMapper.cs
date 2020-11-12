@@ -11,5 +11,6 @@ namespace SoilMatesResources
         Order ParseOrder(OrderResource order);
         OrderResource ParseOrder(Order order);
         List<OrderResource> ParseOrder(List<Order> order);
+
     }
 }

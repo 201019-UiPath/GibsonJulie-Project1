@@ -11,7 +11,7 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
-    [Route("/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
     {
@@ -31,6 +31,53 @@ namespace SoilMatesAPI.Controllers
             try
             {
                 return Ok(_mapper.ParseOrder( _orderService.GetAllOrders()));
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("get/Customer/{id}")]
+        [Produces("application/json")]
+        public IActionResult GetOrderByCustomerId(int id)
+        {
+           List<OrderResource> order = _mapper.ParseOrder(_orderService.GetOrderByCustomerId(id));
+            try
+            {
+                return Ok(order);
+            }
+            catch(Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("get/Location/{id}")]
+        [Produces("application/json")]
+        public IActionResult GetOrderByLocationId(int id)
+        {
+            List<OrderResource> order = _mapper.ParseOrder(_orderService.GetOrderByLocatoinId(id));
+            try
+            {
+                return Ok(order);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost("add")]
+        [Produces("application/json")]
+        [Consumes("application/json")]
+        public IActionResult AddOrder(OrderResource order)
+        {
+            try
+            {
+                _orderService.AddOrder(_mapper.ParseOrder(order));
+                _orderService.SaveChanges();
+                return CreatedAtAction("addOrder", order);
             }
             catch (Exception)
             {

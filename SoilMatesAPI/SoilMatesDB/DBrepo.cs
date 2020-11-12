@@ -116,7 +116,9 @@ namespace SoilMatesDB
             public Inventory GetInventoryItem(int productId, int locationId)
             {
                 Log.Information("Retrieved inventory item.");
-                return (Inventory)context.Inventories.FirstOrDefault(x => x.ProductForeingId == productId && x.LocationForeignId == locationId);
+                return (Inventory)context.Inventories.Include(s=>s)
+                .ThenInclude(s=>s.Product)
+                .FirstOrDefault(x => x.ProductForeingId == productId && x.LocationForeignId == locationId);
             }
 
             /// <summary>
@@ -190,7 +192,7 @@ namespace SoilMatesDB
             public List<Location> GetAllLocations()
             {
                 Log.Information("Retrieved all locations in repository.");
-                return context.Locations.Include(s => s.StoreProducts).ToList();
+                return context.Locations.Include(s => s).ThenInclude(s => s.StoreProducts).ThenInclude(s => s.Product).ToList();
             }
 
             /// <summary>
@@ -328,7 +330,7 @@ namespace SoilMatesDB
             public Product GetProduct(string name)
             {
                 Log.Information("Retrieved product by name.");
-                return (Product)context.Products.FirstOrDefault(x => x.Name == name);
+                return (Product) context.Products.Include(x=>x).FirstOrDefault(x => x.Name == name);
             }
 
             /// <summary>

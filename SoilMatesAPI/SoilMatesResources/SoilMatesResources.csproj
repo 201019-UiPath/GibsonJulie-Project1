@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SoilMatesDB\SoilMatesDB.csproj" />
+    <ProjectReference Include="..\SoilMatesLib\SoilMatesLib.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,6 +5,15 @@ namespace SoilMatesDB.Models
     /// </summary>
     public class Inventory
     {
+
+        public int InventoryId { get; set; }
+        public int Quantity { get; set; }
+        public int ProductForeingId { get; set; }
+        public Product Product { get; set; }
+        public int LocationForeignId { get; set; }
+        public Location Location { get; set; }
+
+
         /// <summary>
         /// Inventory is initialized to 1
         /// </summary>
@@ -28,12 +37,5 @@ namespace SoilMatesDB.Models
             LocationForeignId = locationForeignId;
             ProductForeingId = productForeingId;
         }
-        public int InventoryId { get; set; }
-        public int Quantity { get; set; }
-        public int ProductForeingId { get; set; }
-        public Product Product { get; set; }
-        public int LocationForeignId { get; set; }
-        public Location Location { get; set; }
-
     }
 }

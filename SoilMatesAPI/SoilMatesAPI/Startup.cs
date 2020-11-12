@@ -57,9 +57,14 @@ namespace SoilMatesAPI
             services.AddScoped<IProductRepo, DBrepo>();
             services.AddScoped<IProductMapper, Mapper>();
 
+            services.AddScoped<ILocationService, LocationService>();
+            services.AddScoped<ILocationRepo, DBrepo>();
+            services.AddScoped<ILocationMapper, Mapper>();
 
-
-
+            services.AddScoped<IInventoryService, InventoryService>();
+            services.AddScoped<IIventoryRepo, DBrepo>();
+            services.AddScoped<IInventoryMapper, Mapper>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
