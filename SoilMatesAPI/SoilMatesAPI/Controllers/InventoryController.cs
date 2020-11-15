@@ -8,6 +8,7 @@ using SoilMatesLib;
 using SoilMatesResources;
 using SoilMatesResources.Models;
 using SoilMatesDB.Models;
+using Serilog;
 
 namespace SoilMatesAPI.Controllers
 {
@@ -24,20 +25,59 @@ namespace SoilMatesAPI.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet("get/{pid}/{sid}")]
+        [HttpGet("get")]
         [Produces("application/json")]
-        public IActionResult GetInventoryItem(int pid, int sid)
+        public IActionResult GetInventoryItem()
         {
             try
             {
-                InventoryResource lineItem = _mapper.ParseInventory(_inventoryService.GetInventoryItem(pid, sid));
-                return Ok(lineItem);
+                var allInventory =_mapper.ParseInventory(_inventoryService.GetAllInventory());
+                return Ok(allInventory);
+            }
+            catch (Exception)
+            {
+                Log.Warning("Inventory item access failed");
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("get/{productId}/{locationId}")]
+        [Produces("application/json")]
+        public IActionResult GetInventoryItem(int productId, int locationId)
+        {
+            try
+            {
+                InventoryResource all = _mapper.ParseInventory(_inventoryService.GetInventoryItem(productId, locationId));
+
+                //var all =_mapper.ParseInventory(_inventoryService.GetAllInventory());
+                return Ok(all);
+            }
+            catch (Exception)
+            {
+                Log.Warning("Inventory item access failed");
+                return BadRequest();
+            }
+        }
+
+        [HttpPut("put/{productId}/{locationId}/{quantity}")]
+        [Produces("application/json")]
+        public IActionResult UpdateInventoryItem(int productId, int locationId, int quantity)
+        {
+            try
+            {
+                Log.Information("Updated inventory item");
+                Inventory lineItem = _inventoryService.GetInventoryItem(productId, locationId);
+                if(quantity > 0)
+                {
+                    lineItem.Quantity += quantity;
+                }
+                _inventoryService.SaveChanges();
+                return Ok(_mapper.ParseInventory(lineItem));
             }
             catch (Exception)
             {
                 return BadRequest();
             }
         }
-
     }
 }

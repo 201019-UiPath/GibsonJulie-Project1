@@ -65,17 +65,25 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
-        [HttpPost("add")]
+        [HttpPost("add/{name}/{price}/{description}")]
         [Produces("application/json")]
         [Consumes("application/json")]
-        public IActionResult AddProduct(ProductResource productResource)
+        public IActionResult AddProduct(string name, decimal price, string description)
         {
-            try {
-                _productService.AddNewProduct(productResource.Name, productResource.Price, productResource.Description);
+            try
+            {
+                _productService.AddNewProduct(name, price, description);
                 _productService.SaveChanges();
-                return CreatedAtAction("addProduct", productResource);
+                ProductResource newProduct = new ProductResource
+                {
+                    Description = description,
+                    Name = name,
+                    Price = price,
+                };
+                return CreatedAtAction("addProduct", newProduct);
             }
-            catch(Exception) {
+            catch (Exception)
+            {
                 return BadRequest();
             }
         }

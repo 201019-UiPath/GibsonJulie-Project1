@@ -105,7 +105,30 @@ function GetOrders(sort, email) {
         })
 }
 
-function GetStoreInventory(locationId) {
-    
+function GetAllInventory() {
+    fetch(`https://localhost:44334/Inventory/get/`)
+        .then(respose => respose.json())
+        .then(result => {
+            document.querySelectorAll('#AllInventory tbody tr').forEach(element => element.remove());
+            let table = document.querySelector('#AllInventory tbody');
+            for (let i = 0; i < result.length; ++i) {
 
+                let row = table.insertRow(table.rows.length);
+                let idCell = row.insertCell(0);
+                idCell.innerHTML = result[i].locationForeignId;
+
+                let pidCell = row.insertCell(1);
+                pidCell.innerHTML = result[i].productForeingId;
+
+                let nameCell = row.insertCell(2);
+                nameCell.innerHTML = result[i].product.name;
+
+                let addrCell = row.insertCell(3);
+                addrCell.innerHTML = result[i].quantity;
+            }
+        })
 }
+
+
+
+

@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<div class="card p-2">
+    <form id="inventory">
+        <div class="form-group">
+            <label for="Location" class="control-label text-light">Location</label>
+            <input for="Location" class="form-control" id="locationId" placeholder="Location" />
+        </div>
+        <div class="form-group">
+            <label for="Product" class="control-label text-light">Product</label>
+            <input form="Product" class="form-control" id="productId" placeholder="Product" />
+        </div>
+        <div class="form-group">
+            <label for="Quantity" class="control-label text-light">Quantity</label>
+            <input form="Quantity" class="form-control" id="quantity" placeholder="Quantity" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update Inventory" class="btn btn-warning btn-lg btn-block" onclick="putInventory()" />
+        </div>
+    </form>
+</div>
+
+   
+
+<div class="container mt-4">
+    <button type="button" class="btn btn-info btn-lg btn-block" onclick="GetAllInventory()" >See All Inventory</button>
+    <table class="table table-hover table-light" id="AllInventory">
+        <thead>
+        <th scope="col">Location Id</th>
+        <th scope="col">Product Id</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+

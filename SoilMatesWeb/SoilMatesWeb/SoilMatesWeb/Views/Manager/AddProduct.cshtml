@@ -3,6 +3,70 @@
     ViewData["Title"] = "AddProduct";
 }
 
-<h1>AddProduct</h1>
+<h1 class="text-white">AddProduct</h1>
+
+@*see all products*@
+
+<div class="card p-2">
+    <form id="AddProductToCatalog">
+        <div class="form-group">
+            <label for="productName" class="control-label text-light">Name</label>
+            <input for="productName" class="form-control" id="productName" placeholder="Product Name" />
+        </div>
+        <div class="form-group">
+            <label for="productDescription" class="control-label text-light">Product Description</label>
+            <input form="productDescription" class="form-control" id="productDescription" placeholder="Product Description" />
+        </div>
+        <div class="form-group">
+            <label for="price" class="control-label text-light">Price</label>
+            <input form="price" class="form-control" id="price" placeholder="Price" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Plant to Catalog" class="btn btn-warning btn-lg btn-block" onclick="addProduct()" />
+        </div>
+    </form>
+</div>
+
+<button type="button" class="btn btn-info btn-lg btn-block" onclick="getAllProducts()">See All Products</button>
 
 
+<div class="container mt-4">
+    <button type="button" class="btn btn-info btn-lg btn-block" onclick="GetAllInventory()">See All Inventory</button>
+    <table class="table table-hover table-light" id="AllInventory">
+        <thead>
+        <th scope="col">Location Id</th>
+        <th scope="col">Product Id</th>
+        <th scope="col">Product</th>
+        <th scope="col">Quantity</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+@*<div class="card p-2">
+        <form id="AddProductToInventory">
+            <div class="form-group">
+                <label for="Location" class="control-label text-light">Location</label>
+                <input for="Location" class="form-control" id="locationId" placeholder="Location" />
+            </div>
+            <div class="form-group">
+                <label for="ProductToStore" class="control-label text-light">Add Product to Store</label>
+                <input form="ProductToStore" class="form-control" id="productId" placeholder="Product Id" />
+            </div>
+            <div class="form-group">
+                <label for="QuantityToStore" class="control-label text-light">Quantity</label>
+                <input form="QuantityToStore" class="form-control" id="quantity" placeholder="Quantity" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Update Inventory" class="btn btn-warning btn-lg btn-block" onclick="putInventory()" />
+            </div>
+        </form>
+    </div>*@

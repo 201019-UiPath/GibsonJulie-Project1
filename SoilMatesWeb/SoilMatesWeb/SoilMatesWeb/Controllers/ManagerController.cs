@@ -95,6 +95,11 @@ namespace SoilMatesWeb.Controllers
             }
             return View();
         }
+
+        public IActionResult ReplenishInventory()
+        {
+            return View();
+        }
     }
 }
 

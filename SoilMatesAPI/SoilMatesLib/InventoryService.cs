@@ -94,7 +94,15 @@ namespace SoilMatesLib
         /// <returns></returns>
         public Inventory GetInventoryItem(int productId, int locationId)
         {
-            return repo.GetInventoryItem(productId, locationId);
+            
+            var inventory = repo.GetInventoryItem(productId, locationId);
+            if(inventory == null)
+            {
+                Log.Warning("Access to inventory errpr, item not in inventory");
+                throw new Exception("Item not in inventory");
+            }
+            else
+                return inventory;
         }
 
         /// <summary>

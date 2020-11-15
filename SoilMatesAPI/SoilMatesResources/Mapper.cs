@@ -3,6 +3,7 @@ using SoilMatesResources.Models;
 using System;
 using System.Collections.Generic;
 using SoilMatesLib;
+using Serilog;
 
 namespace SoilMatesResources
 {
@@ -254,11 +255,13 @@ namespace SoilMatesResources
                 ProductForeingId = inventory.ProductForeingId,
                 LocationForeignId = inventory.LocationForeignId,
                 Product = ParseProduct(inventory.Product),
+                //Location = ParseLocation(inventory.Location),
             };
         }
 
         public InventoryResource ParseInventory(Inventory inventory)
         {
+            if (inventory == null) throw new Exception("Inventory Item not found");
             return new InventoryResource
             {
                 InventoryId = inventory.InventoryId,
@@ -266,6 +269,7 @@ namespace SoilMatesResources
                 ProductForeingId = inventory.ProductForeingId,
                 LocationForeignId = inventory.LocationForeignId,
                 Product = ParseProduct(inventory.Product),
+                //Location = ParseLocation(inventory.Location),
             };
         }
 
@@ -279,6 +283,10 @@ namespace SoilMatesResources
                     inventories.Add(ParseInventory(inv));
                 }
                 return inventories;
+            }
+            if (inventory == null) {
+                    Log.Warning("Null inventory value");
+                throw new Exception("Null inventory value");
             }
             return null;
 
