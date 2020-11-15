@@ -156,7 +156,7 @@ namespace SoilMatesResources
                 OrderForiegnId =orderProduct.ProductForiegnId,
                 ProductForiegnId = orderProduct.OrderForiegnId,
                 Quantity = orderProduct.Quantity,
-                Name = orderProduct.Product.Name,
+                Product = ParseProduct(orderProduct.Product),
                 Price = orderProduct.Product.Price,
                 Description = orderProduct.Product.Description,
             };

@@ -5,3 +5,12 @@
 
 <h1>GetInventory</h1>
 
+<h1 class="text-light text-center">View Inventory</h1>
+
+<partial name="_Locations" />
+
+<form asp-controller="Manager" asp-action="ViewInventory" method="post">
+    <partial name="_FormLocation" />
+</form>
+
+<a class="text-light" asp-controller="Manager" asp-action="Index">Back to Manager Menu</a>

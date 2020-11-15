@@ -18,7 +18,6 @@ namespace SoilMatesWeb.Controllers
         private readonly ILogger<CustomerController> _logger;
         private readonly IConfiguration _configuration;
         private readonly string apiBaseUrl;
-        private HttpClient httpClient;
 
         public CustomerController(ILogger<CustomerController> logger, IConfiguration configuration)
         {
@@ -34,8 +33,6 @@ namespace SoilMatesWeb.Controllers
 
         public IActionResult PlaceOrder()
         {
-            //var sessionUser = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("SessionUser"));
-            //_userId = sessionUser.Email;
             return View();
         }
 
@@ -67,6 +64,28 @@ namespace SoilMatesWeb.Controllers
 
         public IActionResult ViewInventory()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ViewInventory(int locationId)
+        {
+            using (var client = new HttpClient())
+            {
+                client.BaseAddress = new Uri(apiBaseUrl);
+                var response = client.GetAsync($"Location/get/{locationId}");
+                response.Wait();
+
+                var result = response.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var jsonString = result.Content.ReadAsStringAsync();
+                    jsonString.Wait();
+
+                    var model = JsonConvert.DeserializeObject<Location>(jsonString.Result);
+                    return View("ViewInventoryItems", model);
+                }
+            }
             return View();
         }
     }

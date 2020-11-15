@@ -276,7 +276,7 @@ namespace SoilMatesDB
             /// <returns>Order product</returns>
             public OrderProduct GetOrderProduct(int orderId, int productId)
             {
-                Log.Information("TPurchased item in order retrieved by order id.");
+                Log.Information("Retrived item in order retrieved by order id.");
                 return (OrderProduct)context.OrderProducts.FirstOrDefault(x => x.OrderForiegnId == orderId && x.ProductForiegnId == productId);
             }
 
@@ -296,7 +296,7 @@ namespace SoilMatesDB
             /// <returns></returns>
             public List<Manager> GetAllManagers()
             {
-                //Log.Information("Retrieved all managers.");
+                Log.Information("Retrieved all managers.");
                 return context.Managers.Include(s => s).ToList();
             }
 

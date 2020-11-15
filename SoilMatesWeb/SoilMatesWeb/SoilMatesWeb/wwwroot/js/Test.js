@@ -72,7 +72,7 @@ function GetAllLocations() {
                 let nameCell = row.insertCell(1);
                 nameCell.innerHTML = result[i].name;
 
-                let addrCell = row.insertCell(1);
+                let addrCell = row.insertCell(2);
                 addrCell.innerHTML = result[i].address;
             }
         })
@@ -105,3 +105,7 @@ function GetOrders(sort, email) {
         })
 }
 
+function GetStoreInventory(locationId) {
+    
+
+}

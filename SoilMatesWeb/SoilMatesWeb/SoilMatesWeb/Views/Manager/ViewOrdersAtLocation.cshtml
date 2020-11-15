@@ -1,0 +1,29 @@
+﻿@model IEnumerable<SoilMatesWeb.Models.Order>
+
+@{
+    ViewData["Title"] = "Orders";
+}
+<h1 class="text-light text-center">Orders</h1>
+<div class="card">
+
+    @foreach (var order in Model)
+    {
+        <div class="card-header">
+            Order Id: @order.OrderId
+        </div>
+        <div class="card-header">
+            Customer Id: @order.CustomerId
+        </div>
+        <div class="card-header">
+            Order Time: @order.OrderTime
+        </div>
+        <div class="card-body">
+            @for (int i = 0; i < order.LineItem.Count; i++)
+            {
+            <p>Item: @order.LineItem[i].Product.Name ----  Description: @order.LineItem[i].Description   ----     Price: @order.LineItem[i].Price </p>
+            }
+        </div>
+    }
+</div>
+
+<a class="text-light" asp-controller="Manager" asp-action="Index">Back to Manager Menu</a>

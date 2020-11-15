@@ -1,0 +1,40 @@
+﻿@model SoilMatesWeb.Models.Location
+
+@{
+    ViewData["Title"] = "ViewInventoryItems";
+}
+
+<h1 class="text-light text-center"> @Model.Name Inventory </h1>
+
+
+<div class="container mt-5">
+    <table class="table table-hover table-light" id="order">
+        <thead>
+            <tr>
+                <th scope="col">Product id</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (var product in Model.StoreProducts)
+            {
+                <tr>
+                    <td>@product.ProductForeingId</td>
+                    <td>@product.Product.Name  </td>
+                    <td>@product.Product.Description </td>
+                    <td>$@product.Product.Price </td>
+                    <td>@product.Quantity </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a class="text-light" asp-controller="Manager" asp-action="Index">Back Manager Page</a>
+</div>

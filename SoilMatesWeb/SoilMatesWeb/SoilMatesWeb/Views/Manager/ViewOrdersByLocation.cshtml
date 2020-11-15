@@ -1,7 +1,15 @@
 ﻿
 @{
-    ViewData["Title"] = "ViewOrdersByLocation";
+    ViewData["Title"] = "View Orders By Location";
 }
 
-<h1>ViewOrdersByLocation</h1>
+<h1 class="text-light text-center">View Orders By Location</h1>
 
+<partial name="_Locations" />
+
+<form asp-action="ViewOrdersByLocation" method="post">
+    <partial name="_FormLocation" />
+</form>
+
+
+<a class="text-light" asp-controller="Manager" asp-action="Index">Back to Manager Menu</a>
