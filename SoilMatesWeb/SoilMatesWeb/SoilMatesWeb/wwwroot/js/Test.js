@@ -1,4 +1,5 @@
-﻿function GetAllCustomers() {
+﻿
+function GetAllCustomers() {
     fetch('https://localhost:44334/Customer/get')
         .then(response => response.json())
         .then(result => {
@@ -10,26 +11,97 @@
                     let nameCell = row.insertCell(0);
                     nameCell.innerHTML = result[i].name;
 
-                    let descriptionCell = row.insertCell(1);
-                    descriptionCell.innerHTML = result[i].email;  
+                    let emailCell = row.insertCell(1);
+                    emailCell.innerHTML = result[i].email;  
             }
         });
 }
 
-function Login() {
+
+function SignUp() {
+    let user = {};
+    user.name = document.querySelector('#name').value;
+    user.email = document.querySelector('#email').value;
+    user.password = document.querySelector('#password').value;
+
+    fetch('https://localhost:44334/Customer/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(user),
+    })
+        .then(response => response.json())
+        .then(data => {
+        
+        });
+}
+
+
+function Login(userType) {
     let user = {};
     user.email = document.querySelector('#email').value;
     user.password = document.querySelector('#password').value;
 
-    fetch(`https://localhost:44334/Customer/get/${user.email}`)
+    fetch(`https://localhost:44334/${userType}/get/${user.email}`)
         .then(respose => respose.json())
         .then(result => {
             if (user.email == result.email && user.password == result.password) {
-                alert('success');
+                alert('Welcome Back');
             }
             else {
-                alert('unsucessful')
+                alert('Something went wrong, redirecting you to main page.')
                 location.href = 'https://localhost:44389/Home';
+            }
+        });
+}
+
+
+function GetAllLocations() {
+    fetch(`https://localhost:44334/Location/get/`)
+        .then(respose => respose.json())
+        .then(result => {
+            document.querySelectorAll('#AllLocations tbody tr').forEach(element => element.remove());
+            let table = document.querySelector('#AllLocations tbody');
+            for (let i = 0; i < result.length; ++i) {
+
+                let row = table.insertRow(table.rows.length);
+                let idCell = row.insertCell(0);
+                idCell.innerHTML = result[i].locationId;
+
+                let nameCell = row.insertCell(1);
+                nameCell.innerHTML = result[i].name;
+
+                let addrCell = row.insertCell(1);
+                addrCell.innerHTML = result[i].address;
             }
         })
 }
+
+function GetOrders(sort, email) {
+    fetch(`https://localhost:44334/Order/get/Customer/${email}/${sort}`)
+        .then(respose => respose.json())
+        .then(result => {
+            document.querySelectorAll('#order tbody tr').forEach(element => element.remove());
+            let table = document.querySelector('#order tbody');
+            for (let i = 0; i < result.length; ++i) {
+                let row = table.insertRow(table.rows.length);
+                let idCell = row.insertCell(0);
+                idCell.innerHTML = result[i].locationId;
+
+                let addrCell = row.insertCell(1);
+                addrCell.innerHTML = result[i].address;
+
+                let timeCell = row.insertCell(2);
+                timeCell.innerHTML = result[i].orderTime;
+
+                let priceCell = row.insertCell(3);
+                priceCell.innerHTML = '$' + result[i].totalPrice
+
+                for (let j = 0; j < result[i].length; ++j) {
+                    let rowInner = table.insertRow(table.rows.length);
+                }
+            }
+        })
+}
+

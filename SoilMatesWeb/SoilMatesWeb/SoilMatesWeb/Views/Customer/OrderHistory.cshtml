@@ -1,0 +1,29 @@
+﻿@model SoilMatesWeb.Models.User
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<div>
+    <button type="button" class="btn btn-warning btn-lg btn-block" onclick="GetOrders(0,'@Model.Email')">See Your Orders by Price</button>
+    <button type="button" class="btn btn-warning btn-lg btn-block" onclick="GetOrders(1,'@Model.Email')">See Your Orders by Date</button>
+</div>
+
+<div class="container mt-2">
+    <table class="table table-hover table-light" id="order">
+        <thead>
+        <th scope="col">Location Id</th>
+        <th scope="col">Address</th>
+        <th scope="col">Time</th>
+        <th scope="col">Price</th>
+        </thead>
+        <tbody>
+            <tr>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div>
+    <a class="text-light" asp-action="Index">Back To Home Page.</a>
+</div>

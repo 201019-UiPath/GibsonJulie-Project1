@@ -15,5 +15,7 @@ namespace SoilMatesResources.Models
         public string Email { get; set; }
         [Required]
         public string Password { get; set; }
+        //public int UserType { get; set; }
+        public int Id { get; set; }
     }
 }

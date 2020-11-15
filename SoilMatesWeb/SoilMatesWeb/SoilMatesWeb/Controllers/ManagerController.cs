@@ -16,5 +16,25 @@ namespace SoilMatesWeb.Controllers
             var sessionUser = JsonConvert.DeserializeObject<User>(HttpContext.Session.GetString("SessionUser"));
             return View();
         }
+
+        public IActionResult ViewAllLocations()
+        {
+            return View();
+        }
+
+        public IActionResult ViewOrdersByLocation()
+        {
+            return View();
+        }
+
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
+        public IActionResult GetInventory()
+        {
+            return View();
+        }
     }
 }

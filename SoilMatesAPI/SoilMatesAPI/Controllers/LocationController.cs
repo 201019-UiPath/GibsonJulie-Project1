@@ -39,7 +39,7 @@ namespace SoilMatesAPI.Controllers
 
         }
 
-        [HttpGet("get/id/{id}")]
+        [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetLocationById(int id)
         {

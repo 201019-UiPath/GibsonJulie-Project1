@@ -27,7 +27,7 @@ namespace SoilMatesWeb
 
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(1.000);
+                options.IdleTimeout = TimeSpan.FromMinutes(20.000);
             });
 
             services.AddControllersWithViews();

@@ -3,33 +3,34 @@
 @{
     ViewData["Title"] = "Manager functions";
 }
-
-
-<div class="card">
-    <div class="card-body"> Order Product </div>
-</div>
 <div class="card">
     <div class="card-body">
-        <button type="button" class="btn btn-info">Go</button> View Locations all locations
+        <a asp-area="" asp-controller="Manager" asp-action="ViewAllLocations" class="btn btn-info mr-4">Go</a>  View all Locations
     </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <button type="button" class="btn btn-info">Go</button>  View Orders by Location
+    <div class="card">
+        <div class="card-body">
+            <a asp-area="" asp-controller="Manager" asp-action="ViewOrdersByLocation" class="btn btn-info mr-4">Go</a>  View Orders by Location
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <button type="button" class="btn btn-info">Go</button> Add Product
+    <div class="card">
+        <div class="card-body">
+            <a asp-area="" asp-controller="Manager" asp-action="GetInventory" class="btn btn-info mr-4">Go</a> Get inventory by location
+        </div>
     </div>
-</div>
-<div class="card">
-    <div class="card-body">
-        <button type="button" class="btn btn-info">Go</button> View Iventory
+    <div class="card">
+        <div class="card-body">
+            <a asp-area="" asp-controller="Manager" asp-action="AddProduct" class="btn btn-info mr-4">Go</a> Add Product to catalog
+        </div>
     </div>
-</div>
+    <div class="card">
+        <div class="card-body">
+            <a asp-area="" asp-controller="Manager" asp-action="ReplenishInvenetory" class="btn btn-info mr-4">Go</a> Replenish Inventory
+        </div>
+    </div>
 
-
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
 
 
 

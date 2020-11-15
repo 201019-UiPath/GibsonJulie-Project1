@@ -1,10 +1,10 @@
 ﻿@model SoilMatesWeb.Models.User
 
 @{
-    ViewData["Title"] = "Login";
+    ViewData["Title"] = "Employee Portal";
 }
         <div class="card">
-            <h5 class="card-header">Login</h5>
+            <h5 class="card-header">Employee Login</h5>
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
@@ -12,7 +12,7 @@
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <div class="form-group">
                                 <label asp-for="Email" class="control-label"></label>
-                                <input asp-for="Email" class="form-control" id="email" />
+                                <input asp-for="Email" class="form-control" id="email" placeholder="empolyee@soilmates.com" />
                                 <span asp-validation-for="Email" class="text-danger"></span>
                             </div>
                             <div class="form-group">
@@ -21,7 +21,7 @@
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn btn-primary" onclick="Login()" />
+                                <input type="submit" value="Login" class="btn btn-info" onclick="Login('Manager')" />
                             </div>
                         </form>
                     </div>
@@ -30,7 +30,7 @@
         </div>
 
     <div>
-        <a asp-action="Home">Back To Home Page.</a>
+        <a class="text-light" asp-action="Index">Back To Home Page.</a>
     </div>
 
     @section Scripts {

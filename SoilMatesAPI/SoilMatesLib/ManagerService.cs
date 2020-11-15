@@ -77,6 +77,12 @@ namespace SoilMatesLib
 
         public Manager GetManagerByEmail(string email)
         {
+            var manager = repo.GetManagerByEmail(email);
+            if(manager == null)
+            {
+                throw new Exception("Manager Not Found");
+            }
+            else 
             return repo.GetManagerByEmail(email);
         }
     }

@@ -12,6 +12,7 @@ namespace SoilMatesResources
         {
             return new Customer()
             {
+                //UserType = customer.UserType,
                 Name = customer.Name,
                 Email = customer.Email,
                 Password = customer.Password
@@ -22,6 +23,7 @@ namespace SoilMatesResources
         {
             return new CustomerResource()
             {
+                Id = customer.Id,
                 Email = customer.Email,
                 Name = customer.Name,
                 Password = customer.Password,
@@ -75,7 +77,7 @@ namespace SoilMatesResources
                 TotalPrice = order.TotalPrice,
                 Address = order.Address,
                 OrderTime = order.OrderTime,
-                //OrderId = order.OrderId,
+                OrderId = order.OrderId,
                 CustomerId = order.CustomerId,
                 LocationId = order.LocationId,
                 LineItem = ParseOrderProductResource(order.LineItem),
@@ -89,7 +91,7 @@ namespace SoilMatesResources
                 TotalPrice = order.TotalPrice,
                 Address = order.Address,
                 OrderTime = order.OrderTime,
-                //OrderId = order.OrderId,
+                OrderId = order.OrderId,
                 CustomerId = order.CustomerId,
                 LocationId = order.LocationId,
                 LineItem = ParseOrderProductResource(order.LineItem)
@@ -193,7 +195,7 @@ namespace SoilMatesResources
         {
             return new Location
             {
-                //LocationId = location.LocationId,
+                LocationId = location.LocationId,
                 Name = location.Name,
                 Address = location.Address,
                 StoreProducts = ParseInventory(location.StoreProducts),
@@ -206,7 +208,7 @@ namespace SoilMatesResources
         {
             return new LocationResource
             {
-                //LocationId = location.LocationId,
+                LocationId = location.LocationId,
                 Name = location.Name,
                 Address = location.Address,
                 StoreProducts = ParseInventory(location.StoreProducts),

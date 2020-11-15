@@ -10,6 +10,7 @@ namespace SoilMatesDB
     public interface IOrdersRepo
     {
         void AddOrder(Order order);
+        Customer GetCustomerByEmail(string email);
         List<Order> GetAllOrders();
 
         List<Order> GetOrderByCustomerId(int id);

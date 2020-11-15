@@ -22,6 +22,11 @@ namespace SoilMatesLib
             this.repo = repo;
         }
 
+        public Customer GetCustomerByEmail(string email)
+        {
+            return repo.GetCustomerByEmail(email);
+        }
+
 
         /// <summary>
         /// Add order to repository
@@ -46,12 +51,13 @@ namespace SoilMatesLib
         /// </summary>
         /// <param name="customerId"></param>
         /// <returns></returns>
-        public List<Order> GetOrderByCustomerId(int customerId)
+        public List<Order> GetOrderByCustomerId(string email)
         {
+            var customer = GetCustomerByEmail(email);
             List<Order> ordersForCustomer = new List<Order>();
-            foreach (var item in repo.GetOrderByCustomerId(customerId))
+            foreach (var item in repo.GetOrderByCustomerId(customer.Id))
             {
-                if (item.CustomerId == customerId)
+                if (item.CustomerId == customer.Id)
                 {
                     ordersForCustomer.Add(item);
                 }

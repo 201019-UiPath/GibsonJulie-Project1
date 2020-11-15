@@ -74,7 +74,12 @@ namespace SoilMatesLib
         }
         public Customer GetCustomerByEmail(string email)
         {
-            return repo.GetCustomerByEmail(email);
+            Customer customer = repo.GetCustomerByEmail(email);
+            if (customer == null){
+                throw new System.Exception("Customer not found");
+            }
+            else 
+                return repo.GetCustomerByEmail(email);
         }
     }
 }

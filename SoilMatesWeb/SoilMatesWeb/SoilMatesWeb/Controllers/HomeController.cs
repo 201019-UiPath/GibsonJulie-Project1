@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Microsoft.AspNetCore.Http;
 
+
 namespace SoilMatesWeb.Controllers
 {
     public class HomeController : Controller
@@ -50,7 +51,41 @@ namespace SoilMatesWeb.Controllers
                 HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
                 return RedirectToAction("Index", "Manager", user);
             }
-            return RedirectToAction("Index", "Manager", user);
+            return RedirectToAction("Index", "Home");
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult SignUp()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult CustomerLogin()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult CustomerLogin(User user)
+        {
+            if (user != null)
+            {
+                HttpContext.Session.SetString("SessionUser", JsonConvert.SerializeObject(user));
+                return RedirectToAction("Index", "Customer", user);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult SignUp(User user)
+        {
+            if(user == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            return RedirectToAction("CustomerLogin", "Home"); 
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

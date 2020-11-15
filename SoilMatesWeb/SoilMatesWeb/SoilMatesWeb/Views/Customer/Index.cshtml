@@ -1,0 +1,32 @@
+﻿@model SoilMatesWeb.Models.User
+
+@{
+    ViewData["Title"] = "Customer functions";
+}
+<div class="card">
+    <div class="card-body">
+        <a asp-area="" asp-controller="Customer" asp-action="PlaceOrder" class="btn btn-info mr-4">Go</a>  Place an Order
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <a asp-area="" asp-controller="Customer" asp-action="OrderHistory" class="btn btn-info mr-4">Go</a>  View Your Order History
+    </div>
+</div>
+<div class="card">
+    <div class="card-body">
+        <a asp-area="" asp-controller="Customer" asp-action="ViewInventory" class="btn btn-info mr-4">Go</a>  View Location Inventory
+    </div>
+</div>
+
+<div>
+    <a class="text-light" asp-controller="Home" asp-action="Index">Back To Home Page.</a>
+</div>
+    
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+

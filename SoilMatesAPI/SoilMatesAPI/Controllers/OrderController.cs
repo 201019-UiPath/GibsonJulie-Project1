@@ -38,13 +38,22 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
-        [HttpGet("get/Customer/{id}")]
+        [HttpGet("get/Customer/{id}/{sortType=0}")]
         [Produces("application/json")]
-        public IActionResult GetOrderByCustomerId(int id)
+        public IActionResult GetOrderByCustomerId(string id, int sortType)
         {
            List<OrderResource> order = _mapper.ParseOrder(_orderService.GetOrderByCustomerId(id));
+            
             try
             {
+                if (sortType == 0)
+                {
+                    order.Sort((x, y) => Decimal.Compare(x.TotalPrice, y.TotalPrice));
+                }
+                else if (sortType == 1)
+                {
+                    order.Sort((x, y) => DateTime.Compare(y.OrderTime, x.OrderTime));
+                }
                 return Ok(order);
             }
             catch(Exception)
