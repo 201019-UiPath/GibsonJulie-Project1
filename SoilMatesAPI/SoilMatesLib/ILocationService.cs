@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SoilMatesLib
 {
+    /// <summary>
+    /// ILocation services inventory to serve location services
+    /// </summary>
     public interface ILocationService
     {
         void AddLocation(Location location);

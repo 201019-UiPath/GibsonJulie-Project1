@@ -33,6 +33,12 @@ namespace SoilMatesLib
             repo.AddInventory(inventory);
         }
 
+        /// <summary>
+        /// Add inventory item to location given items 
+        /// </summary>
+        /// <param name="location"></param>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
         public void AddItemToInventory(Location location, Product product, int quantity)
         {
             Inventory item = new Inventory(location, product, location.LocationId, product.ProductId);
@@ -48,6 +54,12 @@ namespace SoilMatesLib
             SaveChanges();
         }
 
+        /// <summary>
+        /// Adds item to inventory 
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <param name="productId"></param>
+        /// <param name="quantity"></param>
         public void AddItemToInventory(int locationId, int productId, int quantity)
         {
             repo.AddInventoryItem(locationId, productId, quantity);

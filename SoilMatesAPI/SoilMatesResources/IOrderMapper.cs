@@ -6,6 +6,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesResources
 {
+    /// <summary>
+    /// Maps Order model to Order resource model
+    /// </summary>
     public interface IOrderMapper
     {
         Order ParseOrder(OrderResource order);

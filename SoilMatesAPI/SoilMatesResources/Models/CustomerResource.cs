@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Web resource for customer model
+    /// </summary>
     public class CustomerResource
     {
         [Required]

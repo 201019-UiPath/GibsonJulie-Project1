@@ -11,6 +11,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
+    /// <summary>
+    /// API to controller for order operations 
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class OrderController : ControllerBase
@@ -24,6 +27,10 @@ namespace SoilMatesAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets all orders by 
+        /// </summary>
+        /// <returns>List of orders</returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetAllOrders()
@@ -38,6 +45,12 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets order by customer id, sorted order is preset to order by price
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="sortType"></param>
+        /// <returns></returns>
         [HttpGet("get/Customer/{id}/{sortType=0}")]
         [Produces("application/json")]
         public IActionResult GetOrderByCustomerId(string id, int sortType)
@@ -62,6 +75,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Returns order by location id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("get/Location/{id}")]
         [Produces("application/json")]
         public IActionResult GetOrderByLocationId(int id)
@@ -77,6 +95,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// adds complete order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
         [HttpPost("add")]
         [Produces("application/json")]
         [Consumes("application/json")]
@@ -93,5 +116,27 @@ namespace SoilMatesAPI.Controllers
                 return BadRequest();
             }
         }
+
+        /// <summary>
+        /// adds complete order
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        [HttpPost("add/new")]
+        [Produces("application/json")]
+        public IActionResult NewOrder( )
+        {
+            try
+            {
+                Order newOrder = new Order();
+                return CreatedAtAction("addOrder", newOrder);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+
+
     }
 }

@@ -4,6 +4,9 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Product resource
+    /// </summary>
     public class ProductResource
     {
         public int ProductId { get; set; }

@@ -54,13 +54,11 @@ namespace SoilMatesWeb.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult SignUp()
         {
             return View();
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult CustomerLogin()
         {
             return View();

@@ -5,6 +5,9 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Location web resource
+    /// </summary>
     public class LocationResource
     {
         public int LocationId { get; set; }

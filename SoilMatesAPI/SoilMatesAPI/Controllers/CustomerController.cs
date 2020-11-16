@@ -11,6 +11,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
+    /// <summary>
+    /// API Controller for handling customer CRUD opertations
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase
@@ -24,6 +27,11 @@ namespace SoilMatesAPI.Controllers
             _mapper = mapper;
         }
 
+
+        /// <summary>
+        /// Gets all customers 
+        /// </summary>
+        /// <returns>list of JSON customer objects</returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetAllCustomers()
@@ -38,6 +46,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets all customers by email identification 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>JSON Customer</returns>
         [HttpGet("get/{email}")]
         [Produces("application/json")]
         public IActionResult GetCustomerByEmail(string email)
@@ -52,6 +65,12 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Adds customer 
+        /// </summary>
+        /// <param name="newCustomer"></param>
+        /// <returns>JSON Customer</returns>
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]
@@ -68,5 +87,7 @@ namespace SoilMatesAPI.Controllers
                 return BadRequest();
             }
         }
+
+       
     }
 }

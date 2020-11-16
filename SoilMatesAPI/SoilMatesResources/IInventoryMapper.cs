@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace SoilMatesResources
 {
+    /// <summary>
+    /// Maps between inventory resource and data model
+    /// </summary>
     public interface IInventoryMapper
     {
         Inventory ParseInventory(InventoryResource inventory);

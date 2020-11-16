@@ -51,7 +51,6 @@ namespace SoilMatesWeb.Controllers
        
         public IActionResult StartOdering(ShoppingCart cart)
         {
-            cart.Order = new Order();
             return View(cart);
         }
 

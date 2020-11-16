@@ -107,6 +107,13 @@ namespace SoilMatesDB
                 context.Inventories.Add(inventory);
             }
 
+            /// <summary>
+            /// Adds inventory item to repo
+            /// </summary>
+            /// <param name="productId"></param>
+            /// <param name="locationId"></param>
+            /// <param name="quantity"></param>
+            /// <returns></returns>
             public Inventory AddInventoryItem(int productId, int locationId, int quantity)
             {
             Location location = GetLocationById(locationId);

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 
 namespace SoilMatesLib
-{
+{   
+    /// <summary>
+    /// Provides interface for product services
+    /// </summary>
     public interface IOrderProductService
     {
         void AddOrderProduct(OrderProduct orderProduct);

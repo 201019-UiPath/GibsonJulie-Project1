@@ -28,6 +28,11 @@ namespace SoilMatesLib
             repo.AddLocation(location);
         }
 
+        /// <summary>
+        /// Adds new location with name and adderss
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="address"></param>
         public void AddNewLocation(string name, string address)
         {
             Location location = new Location(name, address);

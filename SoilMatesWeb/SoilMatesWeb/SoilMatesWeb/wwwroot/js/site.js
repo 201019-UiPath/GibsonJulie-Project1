@@ -4,7 +4,6 @@
 // Write your JavaScript code.
 
 
-
 function putInventory() {
     let item = {};
     item.location = document.querySelector('#locationId').value;
@@ -60,7 +59,6 @@ async function getAllProducts(){
         descCell.innerHTML = products[i].description;
 
     }
-
 }
 
 function addProduct() {
@@ -100,5 +98,46 @@ async function postInventoryItem() {
     await addToInventory(ProductInventoryId, InventoryLocationId, InventoryQuantity)
 }
 
+
+async function fetchAllInventories() {
+    let url = "https://localhost:44334/Inventory/get"
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            credentials: 'same-origin',
+        });
+        const inv = await response.json();
+        return inv;
+    } catch (error) {
+        alert(error);
+    }
+}
+
+
+async function getInvetory() {
+    const products = await fetchAllInventories();
+    let InventoryLocationId =  document.querySelector('#idLocation').value;
+    customerLocationId = InventoryLocationId;
+    document.querySelectorAll('#StoreInventory tbody tr').forEach(element => element.remove());
+    let table = document.querySelector('#StoreInventory tbody');
+    for (let i = 0; i < products.length; ++i) {
+        if (products[i].locationForeignId == InventoryLocationId) {
+            let row = table.insertRow(table.rows.length);
+
+            let priceCell = row.insertCell(0);
+            priceCell.innerHTML = products[i].product.productId;
+
+            let nameCell = row.insertCell(1);
+            nameCell.innerHTML = products[i].product.name;
+
+
+            let descCell = row.insertCell(2);
+            descCell.innerHTML = products[i].product.description;
+
+            let idCell = row.insertCell(3);
+            idCell.innerHTML = products[i].quantity;
+        }
+    }
+}
 
 

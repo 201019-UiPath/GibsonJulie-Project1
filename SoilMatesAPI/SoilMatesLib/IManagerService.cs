@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 
 namespace SoilMatesLib
-{
+{   
+    /// <summary>
+    /// Manager service interface
+    /// </summary>
     public interface IManagerService
     {
         void AddManager(Manager newManager);

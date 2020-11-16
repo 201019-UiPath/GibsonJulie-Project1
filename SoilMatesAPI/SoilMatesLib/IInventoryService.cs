@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SoilMatesLib
 {
+    /// <summary>
+    /// Inventory interface for inventory services
+    /// </summary>
     public interface IInventoryService
     {
         void AddInventory(Inventory inventory);

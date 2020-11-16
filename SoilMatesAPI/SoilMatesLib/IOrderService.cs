@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace SoilMatesLib
 {
+    /// <summary>
+    /// Order service interface
+    /// </summary>
     public interface IOrderService
     {
         Customer GetCustomerByEmail(string email);

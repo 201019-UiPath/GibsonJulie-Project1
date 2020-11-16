@@ -11,6 +11,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
+    /// <summary>
+    /// Location controller that handles CRUD operations for locations 
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class LocationController : ControllerBase
@@ -18,12 +21,21 @@ namespace SoilMatesAPI.Controllers
         private readonly ILocationService _locationService;
         private readonly ILocationMapper _mapper;
         
+        /// <summary>
+        /// Location constructor
+        /// </summary>
+        /// <param name="locationService"></param>
+        /// <param name="mapper"></param>
         public LocationController(ILocationService locationService, ILocationMapper mapper)
         {
             _locationService = locationService;
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets all locations 
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetAllLocations()
@@ -39,6 +51,11 @@ namespace SoilMatesAPI.Controllers
 
         }
 
+        /// <summary>
+        /// Gets location by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("get/{id}")]
         [Produces("application/json")]
         public IActionResult GetLocationById(int id)
@@ -53,6 +70,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a location
+        /// </summary>
+        /// <param name="location"></param>
+        /// <returns></returns>
         [HttpPost("add")]
         [Produces("application/json")]
         [Consumes("application/json")]

@@ -66,6 +66,12 @@ namespace SoilMatesLib
 
         }
 
+
+        /// <summary>
+        /// Gets order by location 
+        /// </summary>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
         public List<Order> GetOrderByLocatoinId(int locationId)
         {
             List<Order> ordersForCustomer = new List<Order>();

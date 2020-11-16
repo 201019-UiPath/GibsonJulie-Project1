@@ -11,7 +11,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
-
+    /// <summary>
+    /// Controller for product models 
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -25,6 +27,10 @@ namespace SoilMatesAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets all products 
+        /// </summary>
+        /// <returns>JSON of Product resources</returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetAllProducts()
@@ -38,6 +44,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets products by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>returns product</returns>
         [HttpGet("get/id/{id}")]
         [Produces("application/json")]
         public IActionResult GetProductById(int id){
@@ -51,6 +62,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// gets product by name 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns>JSON product</returns>
         [HttpGet("get/name/{name}")]
         [Produces("application/json")]
         public IActionResult GetProductByName(String name)
@@ -65,6 +81,13 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds product
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="description"></param>
+        /// <returns></returns>
         [HttpPost("add/{name}/{price}/{description}")]
         [Produces("application/json")]
         [Consumes("application/json")]
@@ -87,7 +110,5 @@ namespace SoilMatesAPI.Controllers
                 return BadRequest();
             }
         }
-
-
     }
 }

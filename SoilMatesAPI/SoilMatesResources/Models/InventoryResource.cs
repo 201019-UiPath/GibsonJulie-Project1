@@ -4,6 +4,9 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Web resource of inventory resource
+    /// </summary>
     public class InventoryResource
     {
         public int InventoryId { get; set; }

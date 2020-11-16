@@ -5,6 +5,9 @@ using System.Text;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Web order resource
+    /// </summary>
     public class OrderResource
     {
         public int OrderId { get; set; }

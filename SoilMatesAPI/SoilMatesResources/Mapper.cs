@@ -7,8 +7,16 @@ using Serilog;
 
 namespace SoilMatesResources
 {
+    /// <summary>
+    /// Maps objects from web models to data models and vice verse
+    /// </summary>
     public class Mapper : ICustomerMapper, IManagerMapper, IOrderMapper, IProductMapper, IOrderProductMapper, ILocationMapper, IInventoryMapper
     {
+        /// <summary>
+        /// Parse customer from web to data model
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         public Customer ParseCustomer(CustomerResource customer)
         {
             return new Customer()
@@ -20,6 +28,12 @@ namespace SoilMatesResources
             };
         }
 
+
+        /// <summary>
+        /// parse customer from data model to web resource
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         public CustomerResource ParseCustomer(Customer customer)
         {
             return new CustomerResource()
@@ -31,6 +45,11 @@ namespace SoilMatesResources
             };
         }
 
+        /// <summary>
+        /// parse customer from list of web resource to data resource
+        /// </summary>
+        /// <param name="customer"></param>
+        /// <returns></returns>
         public List<CustomerResource> ParseCustomer(List<Customer> customer)
         {
             List<CustomerResource> allCustomers = new List<CustomerResource>();
@@ -40,7 +59,12 @@ namespace SoilMatesResources
             }
             return allCustomers;
         }
-
+        
+        /// <summary>
+        /// Parses manager from web resource to manager resource
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public Manager ParseManager(ManagerResource manager)
         {
             return new Manager()
@@ -51,6 +75,11 @@ namespace SoilMatesResources
             };
         }
 
+        /// <summary>
+        /// Parses manager from data model to web model
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public ManagerResource ParseManager(Manager manager)
         {
             return new ManagerResource()
@@ -61,6 +90,11 @@ namespace SoilMatesResources
             };
         }
 
+        /// <summary>
+        /// Parses list of data manager models into web resources 
+        /// </summary>
+        /// <param name="manager"></param>
+        /// <returns></returns>
         public List<ManagerResource> ParseManager(List<Manager> manager)
         {
             List<ManagerResource> allManagers = new List<ManagerResource>();
@@ -78,7 +112,7 @@ namespace SoilMatesResources
                 TotalPrice = order.TotalPrice,
                 Address = order.Address,
                 OrderTime = order.OrderTime,
-                OrderId = order.OrderId,
+                //OrderId = order.OrderId,
                 CustomerId = order.CustomerId,
                 LocationId = order.LocationId,
                 LineItem = ParseOrderProductResource(order.LineItem),

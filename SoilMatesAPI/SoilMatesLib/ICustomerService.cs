@@ -5,6 +5,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesLib
 {
+    /// <summary>
+    /// Customer interface that defines behavior of customers
+    /// </summary>
     public interface ICustomerService
     {
         void AddCustomer(Customer newCustomer);

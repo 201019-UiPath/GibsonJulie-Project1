@@ -43,14 +43,14 @@ namespace SoilMatesTest.SoilMatesDBTest
 
         private readonly List<Inventory> testInventories = new List<Inventory>() {
              new Inventory() {
-                  InventoryId = 1,
-             ProductForeingId = 2,
-             LocationForeignId =2,
+                 InventoryId = 1,
+                 ProductForeingId = 2,
+                 LocationForeignId =2,
              },
-               new Inventory() {
-                  InventoryId = 2,
-             ProductForeingId = 3,
-             LocationForeignId =3,
+             new Inventory() {
+                  InventoryId = 5,
+                 ProductForeingId = 6,
+                 LocationForeignId =7,
              }
          };
 
@@ -71,11 +71,53 @@ namespace SoilMatesTest.SoilMatesDBTest
             TotalPrice = 2.00m,
         };
 
+        private readonly List<Order> testOrders = new List<Order>()
+        {
+            new Order()
+            {
+                 OrderId = 1,
+                CustomerId = 1,
+                LocationId = 1,
+                Address = "Sebring, Fl",
+                OrderTime = DateTime.Now,
+                TotalPrice = 2.00m,
+            },
+            new Order()
+            {
+                 OrderId = 2,
+                CustomerId = 2,
+                LocationId = 2,
+                Address = "Sebring, Fl",
+                OrderTime = DateTime.Now,
+                TotalPrice = 2.00m,
+            }
+
+        };
+
+
+
         private readonly OrderProduct testOrderProduct = new OrderProduct()
         {
             Id = 2,
             OrderForiegnId = 3,
             ProductForiegnId = 1,
+        };
+
+        private readonly List<OrderProduct> testOrderProducts = new List<OrderProduct>()
+        {
+            new OrderProduct
+            {
+                 Id = 2,
+                OrderForiegnId = 3,
+                ProductForiegnId = 1,
+            },
+             new OrderProduct
+            {
+                 Id = 3,
+                OrderForiegnId = 5,
+                ProductForiegnId = 6,
+            },
+
         };
 
         private readonly Product testProduct = new Product()
@@ -157,6 +199,8 @@ namespace SoilMatesTest.SoilMatesDBTest
             testcontext.Inventories.AddRange(testInventories);
             testcontext.Locations.AddRange(testLocations);
             testcontext.Products.AddRange(testProducts);
+            testcontext.OrderProducts.AddRange(testOrderProducts);
+            testcontext.Orders.AddRange(testOrders);
             testcontext.SaveChanges();
         }
 
@@ -313,6 +357,81 @@ namespace SoilMatesTest.SoilMatesDBTest
             Assert.Equal("Will", result.Name);
         }
 
+        [Fact]
+        public void GetLocationByIdShouldGet()
+        {
+
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetLocationByIdShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetLocationById(3);
+
+            Assert.NotNull(result);
+            Assert.Equal("FlowerMates", result.Name);
+        }
+
+
+        /// <summary>
+        /// test if customer is retrieved by login
+        /// </summary>
+        [Fact]
+        public void GetCustomerByLoginShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetCustomerByLoginShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetCustomerByLogin("BostonCream", "OllieAndWill@mail.com");
+
+            Assert.NotNull(result);
+            Assert.Equal("Will", result.Name);
+        }
+
+        [Fact]
+        public void GetCustomerByEmailShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetCustomerByEmailShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetCustomerByEmail("OllieAndWill@mail.com");
+
+            Assert.NotNull(result);
+            Assert.Equal("Will", result.Name);
+        }
+
+
+        /// <summary>
+        /// Tests if manager is retrieved by emil
+        /// </summary>
+        [Fact]
+        public void GetManagerByEmailShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetManagerByEmailShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetManagerByEmail("Binging@mail.usf.edu");
+
+            Assert.NotNull(result);
+            Assert.Equal("Babish", result.Name);
+        }
+
+
+
         /// <summary>
         /// Test if manager can be retrieved by manager id
         /// </summary>
@@ -350,6 +469,124 @@ namespace SoilMatesTest.SoilMatesDBTest
             Assert.NotNull(result);
             Assert.Equal("Aloe", result.Name);
         }
+
+        
+
+        /// <summary>
+        /// Test if product can be retrieved from repository by product id
+        /// </summary>
+        [Fact]
+        public void GetProductByNameShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetProductByNameShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetProduct("Aloe");
+
+            Assert.NotNull(result);
+            Assert.Equal("Aloe", result.Name);
+        }
+
+        /// <summary>
+        /// Test if gets all locations
+        /// </summary>
+        [Fact]
+        public void GetALLLocationsShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetAllLocationsShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetAllLocations();
+
+            Assert.NotNull(result);
+            Assert.Equal(2,result.Count);
+        }
+
+        /// <summary>
+        /// Get all products should get all products 
+        /// </summary>
+        [Fact]
+        public void GetALLProductsShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetAllProductsShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetAllProducts();
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
+
+        /// <summary>
+        /// Get all order products should get
+        /// </summary>
+        [Fact]
+        public void GetALLOrderProductsShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetAllOrderProductsShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetAllOrderProduct();
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
+
+        /// <summary>
+        /// Get all order should get all orders
+        /// </summary>
+        [Fact]
+        public void GetALLOrdersProductsShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetAllOrderShouldGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetAllOrders();
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
+
+        /// <summary>
+        /// Get all order products should get
+        /// </summary>
+        [Fact]
+        public void GetALLManagersProductsShouldGet()
+        {
+            var options = new DbContextOptionsBuilder<SoilMatesContext>().UseInMemoryDatabase("GetAllManagersGet").Options;
+            using var testContext = new SoilMatesContext(options);
+            seed(testContext);
+
+            using var assertContext = new SoilMatesContext(options);
+            repo = new DBrepo(assertContext);
+
+            var result = repo.GetAllManagers();
+
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count);
+        }
+
+  
 
     }
 }

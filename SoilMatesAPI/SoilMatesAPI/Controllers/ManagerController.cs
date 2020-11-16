@@ -11,6 +11,9 @@ using SoilMatesDB.Models;
 
 namespace SoilMatesAPI.Controllers
 {
+    /// <summary>
+    /// API controller for Manager services
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class ManagerController : ControllerBase
@@ -24,6 +27,10 @@ namespace SoilMatesAPI.Controllers
             _mapper = mapper;
         }
 
+        /// <summary>
+        /// Gets all managers
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetAllManagers()
@@ -38,6 +45,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets manager by email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>JSON of manager</returns>
         [HttpGet("get/{email}")]
         [Produces("application/json")]
         public IActionResult GetManagerByEmail(string email)
@@ -53,6 +65,11 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Creates manager 
+        /// </summary>
+        /// <param name="newManager"></param>
+        /// <returns></returns>
         [HttpPost("add")]
         [Consumes("application/json")]
         [Produces("application/json")]

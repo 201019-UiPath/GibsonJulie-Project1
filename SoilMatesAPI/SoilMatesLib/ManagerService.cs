@@ -70,11 +70,20 @@ namespace SoilMatesLib
             repo.SaveChanges();
         }
 
+        /// <summary>
+        /// Gets all managers from repository
+        /// </summary>
+        /// <returns>List of Manager</returns>
         public List<Manager> GetAllManagers()
         {
             return repo.GetAllManagers();
         }
 
+        /// <summary>
+        /// Get manager model by email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Manager</returns>
         public Manager GetManagerByEmail(string email)
         {
             var manager = repo.GetManagerByEmail(email);

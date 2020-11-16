@@ -61,6 +61,12 @@ namespace SoilMatesLib
             return repo.GetCustomerByLogin(password, email);
         }
 
+        /// <summary>
+        /// Sign up customer by form information 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
         public void SignUpCustomer(string name, string email, string password)
         {
             if (repo.GetCustomerByEmail(email) != null)
@@ -72,6 +78,12 @@ namespace SoilMatesLib
             AddCustomer(newCustomer);
             SaveChanges();
         }
+
+        /// <summary>
+        /// Gets customer by email
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public Customer GetCustomerByEmail(string email)
         {
             Customer customer = repo.GetCustomerByEmail(email);

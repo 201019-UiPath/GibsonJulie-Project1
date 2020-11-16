@@ -5,6 +5,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SoilMatesResources.Models
 {
+    /// <summary>
+    /// Web manager resource 
+    /// </summary>
     public class ManagerResource
     {
         [Required]

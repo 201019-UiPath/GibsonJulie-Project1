@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace SoilMatesResources
 {
+    /// <summary>
+    /// Maps customer from web resource to data model
+    /// </summary>
     public interface ICustomerMapper
     {
         Customer ParseCustomer(CustomerResource customer);

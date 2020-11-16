@@ -12,6 +12,9 @@ using Serilog;
 
 namespace SoilMatesAPI.Controllers
 {
+    /// <summary>
+    /// Controller that handles Inventory items
+    /// </summary>
     [Route("[controller]")]
     [ApiController]
     public class InventoryController : ControllerBase
@@ -19,12 +22,22 @@ namespace SoilMatesAPI.Controllers
         private readonly IInventoryService _inventoryService;
         private readonly IInventoryMapper _mapper;
 
+        /// <summary>
+        /// Inventory constructor with mapper and inventory service dependancy injection
+        /// </summary>
+        /// <param name="inventoryService"></param>
+        /// <param name="mapper"></param>
         public InventoryController(IInventoryService inventoryService, IInventoryMapper mapper)
         {
             _inventoryService = inventoryService;
             _mapper = mapper;
         }
 
+
+        /// <summary>
+        /// Gets all inventory items 
+        /// </summary>
+        /// <returns>List<InventoryResource></returns>
         [HttpGet("get")]
         [Produces("application/json")]
         public IActionResult GetInventoryItem()
@@ -41,6 +54,12 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Gets inventory by product id and location id
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
         [HttpGet("get/{productId}/{locationId}")]
         [Produces("application/json")]
         public IActionResult GetInventoryItem(int productId, int locationId)
@@ -59,6 +78,13 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// updates inventory quantity given location and product ids
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="locationId"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         [HttpPut("put/{productId}/{locationId}/{quantity}")]
         [Produces("application/json")]
         public IActionResult UpdateInventoryItem(int productId, int locationId, int quantity)
@@ -80,6 +106,13 @@ namespace SoilMatesAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// Add inventory product 
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="locationId"></param>
+        /// <param name="quantity"></param>
+        /// <returns></returns>
         [HttpPost("add/{productId}/{locationId}/{quantity}")]
         [Produces("application/json")]
         public IActionResult AddInventoryItem(int productId, int locationId, int quantity)

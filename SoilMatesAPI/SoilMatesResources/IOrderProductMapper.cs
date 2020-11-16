@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SoilMatesResources
 {
+    /// <summary>
+    /// Maps OrderProduct from web and data models
+    /// </summary>
     public interface IOrderProductMapper
     {
         OrderProduct ParseOrderProductResource(OrderProductResource orderProduct);

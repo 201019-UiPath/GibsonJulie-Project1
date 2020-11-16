@@ -9,9 +9,6 @@ namespace SoilMatesWeb.Models
     {
         public List<Product> Items { get; set; }
         public string UserId {get; set;}
-        public Location Location { get; set; }
-        public int OrderId { get; set; }
-        public Order Order { get; set; }
         public int LocationId { get; set; }
     }
 }
