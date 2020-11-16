@@ -123,6 +123,7 @@ namespace SoilMatesResources
         {
             return new ProductResource
             {
+                ProductId = product.ProductId,
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,

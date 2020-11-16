@@ -48,6 +48,12 @@ namespace SoilMatesLib
             SaveChanges();
         }
 
+        public void AddItemToInventory(int locationId, int productId, int quantity)
+        {
+            repo.AddInventoryItem(locationId, productId, quantity);
+            SaveChanges();
+        }
+
         /// <summary>
         /// Gets all inventory items for every store
         /// </summary>
@@ -94,15 +100,7 @@ namespace SoilMatesLib
         /// <returns></returns>
         public Inventory GetInventoryItem(int productId, int locationId)
         {
-            
-            var inventory = repo.GetInventoryItem(productId, locationId);
-            if(inventory == null)
-            {
-                Log.Warning("Access to inventory errpr, item not in inventory");
-                throw new Exception("Item not in inventory");
-            }
-            else
-                return inventory;
+            return repo.GetInventoryItem(productId, locationId);
         }
 
         /// <summary>

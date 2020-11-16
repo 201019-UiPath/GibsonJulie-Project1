@@ -79,5 +79,22 @@ namespace SoilMatesAPI.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpPost("add/{productId}/{locationId}/{quantity}")]
+        [Produces("application/json")]
+        public IActionResult AddInventoryItem(int productId, int locationId, int quantity)
+        {
+            try
+            {
+                _inventoryService.AddItemToInventory(productId, locationId, quantity);
+                Log.Information("Added Inventory Item");
+                return Ok();
+            }
+            catch (Exception e)
+            {
+                Log.Warning(e.Message);
+                return BadRequest();
+            }
+        }
     }
 }

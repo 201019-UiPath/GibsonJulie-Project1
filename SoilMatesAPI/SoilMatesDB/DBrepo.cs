@@ -107,13 +107,30 @@ namespace SoilMatesDB
                 context.Inventories.Add(inventory);
             }
 
-            /// <summary>
-            /// Retrieves inventory object from database by product id and location id
-            /// </summary>
-            /// <param name="productId"></param>
-            /// <param name="locationId"></param>
-            /// <returns></returns>
-            public Inventory GetInventoryItem(int productId, int locationId)
+            public Inventory AddInventoryItem(int productId, int locationId, int quantity)
+            {
+            Location location = GetLocationById(locationId);
+            Product product = GetProduct(productId);
+
+                Inventory item = new Inventory()
+                {
+                    LocationForeignId = locationId,
+                    ProductForeingId = productId,
+                    Location = location,
+                    Product = product,
+                    Quantity = quantity,
+                };
+                AddInventory(item);
+                return item;
+            }
+
+        /// <summary>
+        /// Retrieves inventory object from database by product id and location id
+        /// </summary>
+        /// <param name="productId"></param>
+        /// <param name="locationId"></param>
+        /// <returns></returns>
+        public Inventory GetInventoryItem(int productId, int locationId)
             {
                 Log.Information("Retrieved inventory item.");
                 return (Inventory)context.Inventories.Include(s=>s)

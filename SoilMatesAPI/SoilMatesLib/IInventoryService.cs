@@ -7,6 +7,8 @@ namespace SoilMatesLib
     {
         void AddInventory(Inventory inventory);
         void AddItemToInventory(Location location, Product product, int quantity);
+
+        void AddItemToInventory(int locationId, int productId, int quantity);
         List<Inventory> GetAllInventory();
         Inventory GetInventoryItem(int productId, int locationId);
         List<Inventory> GetInventoryItemByProductId(int id);

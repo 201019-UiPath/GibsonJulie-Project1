@@ -1,24 +1,22 @@
 ﻿
 @{
-    ViewData["Title"] = "AddProduct";
+    ViewData["Title"] = "Add Product";
 }
 
-<h1 class="text-white">AddProduct</h1>
+<h1 class="text-white text-center">Add Product to Catalog</h1>
 
-@*see all products*@
-
-<div class="card p-2">
+<div class="card p-4">
     <form id="AddProductToCatalog">
         <div class="form-group">
-            <label for="productName" class="control-label text-light">Name</label>
+            <label for="productName" class="control-label">Name</label>
             <input for="productName" class="form-control" id="productName" placeholder="Product Name" />
         </div>
         <div class="form-group">
-            <label for="productDescription" class="control-label text-light">Product Description</label>
+            <label for="productDescription" class="control-label">Product</label>
             <input form="productDescription" class="form-control" id="productDescription" placeholder="Product Description" />
         </div>
         <div class="form-group">
-            <label for="price" class="control-label text-light">Price</label>
+            <label for="price" class="control-label">Price</label>
             <input form="price" class="form-control" id="price" placeholder="Price" />
         </div>
         <div class="form-group">
@@ -27,10 +25,47 @@
     </form>
 </div>
 
-<button type="button" class="btn btn-info btn-lg btn-block" onclick="getAllProducts()">See All Products</button>
+<div class="container p-2 mt-4">
+    <button type="button" class="btn btn-info btn-lg btn-block" onclick="getAllProducts()">See All Products in Catalog</button>
+    <table class="table table-hover table-light" id="AllProductsUpdate">
+        <thead>
+        <th scope="col">Product Id</th>
+        <th scope="col">Name </th>
+        <th scope="col">Price </th>
+        <th scope="col">Description </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
+<h1 class="text-white text-center mt-4">Add Product to Inventory</h1>
+<div class="card p-4">
+    <form id="AddToInventory">
+        <div class="form-group">
+            <label for="InventoryLocation" class="control-label">Location Id</label>
+            <input for="InventoryLocation" class="form-control" id="InventoryLocation" placeholder="Inventory Id" />
+        </div>
+        <div class="form-group">
+            <label for="ProductInventoryId" class="control-label">Product</label>
+            <input form="ProductInventoryId" class="form-control" id="ProductInventoryId" placeholder="Product Id" />
+        </div>
+        <div class="form-group">
+            <label for="InventoryQuantity" class="control-label">Quantity</label>
+            <input form="InventoryQuantity" class="form-control" id="InventoryQuantity" placeholder="Quantity" />
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add Product to Inventory" class="btn btn-warning btn-lg btn-block" onclick="postInventoryItem()" />
+        </div>
+    </form>
+</div>
 
-<div class="container mt-4">
+<div class="container p-2 mt-4">
     <button type="button" class="btn btn-info btn-lg btn-block" onclick="GetAllInventory()">See All Inventory</button>
     <table class="table table-hover table-light" id="AllInventory">
         <thead>
@@ -49,24 +84,4 @@
     </table>
 </div>
 
-
-
-@*<div class="card p-2">
-        <form id="AddProductToInventory">
-            <div class="form-group">
-                <label for="Location" class="control-label text-light">Location</label>
-                <input for="Location" class="form-control" id="locationId" placeholder="Location" />
-            </div>
-            <div class="form-group">
-                <label for="ProductToStore" class="control-label text-light">Add Product to Store</label>
-                <input form="ProductToStore" class="form-control" id="productId" placeholder="Product Id" />
-            </div>
-            <div class="form-group">
-                <label for="QuantityToStore" class="control-label text-light">Quantity</label>
-                <input form="QuantityToStore" class="form-control" id="quantity" placeholder="Quantity" />
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Update Inventory" class="btn btn-warning btn-lg btn-block" onclick="putInventory()" />
-            </div>
-        </form>
-    </div>*@
+<a class="text-light" asp-controller="Manager" asp-action="Index">Back to Manager Menu</a>
