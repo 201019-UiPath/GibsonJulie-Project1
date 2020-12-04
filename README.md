@@ -1,6 +1,6 @@
 # SoilMates
 ## Project Description
-SoilMates app is an online web application that enables customers purchase plants online from different locations.  
+This repository contains code for SoilMates, a full stack web application that allows for customers to create an account, shop for plants, and maintain their order histories. Also, SoilMates website allows for adminstrators to update different store locations and keep track of inventories and order histories. 
 
 ## Technologies Used
 - C#
@@ -34,14 +34,10 @@ To-do list:
 - Improve User Experiance
 
 ## Getting Started
-- clone the directory: `git clone https://github.com/201019-UiPath/GibsonJulie-Project1.git`
-- launch website:
-> - run sln via visual studio code in `SoilMatesWeb/SoilMatesWeb`
-- launch API: 
-> - run sln via visual studio code in `SoilMatesAPI` 
+To create a personal copy of this project you will need visual studio code. Once you have installed visual studio code, clone this repository to make a copy of this project on your local computer run the following command `git clone https://github.com/201019-UiPath/GibsonJulie-Project1.git`. 
 
 ## Usage
-To run code first run the API from `SoilMatesAPI` directory then launch front-end website from the `SoilMatesWeb\SoilMatesWeb` directory. Once the front-end website and back-end REST api are running, core features mentioned in the feature section of this file will be available to users. 
+To launch the application you need to run the front and back end solutions from visual studio. To run the front end website open the solution in visual studio code from `SoilMatesWeb/SoilMatesWeb` and `SoilMatesAPI`. Once both applications are running you can navigate through the website as a user or create a database to start your own SoilMates store. 
 
 ## License
 MIT License
