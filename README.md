@@ -44,4 +44,4 @@ To-do list:
 To run code first run the API from `SoilMatesAPI` directory then launch front-end website from the `SoilMatesWeb\SoilMatesWeb` directory. Once the front-end website and back-end REST api are running, core features mentioned in the feature section of this file will be available to users. 
 
 ## License
-
+MIT License
