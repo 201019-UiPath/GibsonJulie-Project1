@@ -41,8 +41,7 @@ To-do list:
 > - run sln via visual studio code in `SoilMatesAPI` 
 
 ## Usage
-To run code first run the API from `SoilMatesAPI` directory then launch front-end website from the `SoilMatesWeb\SoilMatesWeb` directory
-Once website and api are running, core features should be available to users. 
+To run code first run the API from `SoilMatesAPI` directory then launch front-end website from the `SoilMatesWeb\SoilMatesWeb` directory. Once the website and api are running, core features mentioned in the feature section of this file should be available to users. 
 
 ## License
 
